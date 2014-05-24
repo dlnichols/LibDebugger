@@ -16,7 +16,7 @@
 -- IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 -- CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-LibDebugger = LibStub:NewLibrary("LibDebugger-0.0", 1)
+LibDebugger = LibStub:NewLibrary("LibDebugger-0.1", 1)
 
 -- Already loaded
 if not LibDebugger then return end
@@ -29,7 +29,7 @@ local Widgets = LibStub:GetLibrary("LibWidgets-0.0")
 -- Variables --
 ---------------
 
-LibDebugger._VERSION = "LibDebugger-0.0.1"
+LibDebugger._VERSION = "LibDebugger-0.1.1"
 
 LIB_DEBUGGER_INFO   = 1
 LIB_DEBUGGER_NOTICE = 4

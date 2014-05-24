@@ -1,7 +1,7 @@
-## APIVersion: 100003
+## APIVersion: 100004
 ## Title: LibDebugger
 ## Author: Dan Nichols <dan@thenicholsrealm.com>
-## Version: 0.1.0
+## Version: 0.1.1
 
 ## Libraries
 lib\LibStub\LibStub.lua
