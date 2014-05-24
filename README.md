@@ -24,7 +24,7 @@ functional REPL/debugger for AddOn development.
     = 'expression'
       Use this to prepend 'return' on an expression or statement to allow
       printing of the results
-    =clear
+    =clear (not implemented)
       Use this while entering a multi-line statement to clear it and return to
       normal edit mode
 
@@ -38,18 +38,21 @@ and an 'info' message is passed, it will not be displayed.  Lowering the log
 threshold will not display that message, and conversely, raising it will not
 cause old messages that do not meet the new threshold to disappear.
 
+(Currently unable to change log level except by editting the text file.)
+
 ## REPL
 Though the REPL operates pretty much how one would expect a REPL to operate,
 there are a few things to keep in mind.
 
 ### Environment
-The default environment is the root/global environment.  As of this writing,
-debug functionality is not fully implemented so there is no way to change the
-environment.  Eventually, users of the library will be able to call
-LibDebugger:Pry(), which will start the REPL in the environment in which it
-was called.  Thusly, an author will be able to execute code in the environment
-of a function they are writing, and inspect variables that would otherwise be
-out of scope.
+The default environment is the root/global environment.  I am still
+investigating whether it is feasible or even possible to implement an actual
+debugger.  Since we have setfenv, changing the environment/scope of the REPL
+is easy.  However, we lack coroutines and I haven't found a good way to
+interrupt execution and wait for input, but not block game execution.  If I
+am able to overcome that limitation, we'll still be limited to functions that
+run post initialization (post ADDON_LOADED event) as we won't have a UI prior
+to that.
 
 ### Return Values
 Any LUA statement (single or multi-line) will be evaluated, and any returned
@@ -75,6 +78,8 @@ would be the same as typing
 which would display '5' in the results on the debug console.
 
 #### Multi-line Statements
+Warning:  These are still very buggy.
+
 Any incomplete statement will begin a multi-line statement, thus entering
 
     function foo()
@@ -87,4 +92,4 @@ the statement is completed by entering
 If you are in the middle of a multi-line statement and don't wish to complete
 it, simply enter
 
-    =clear
+    =clear (not yet implemented)
